@@ -8,56 +8,56 @@
     <div class="row">
       <div class="col-md-12">
         {{ account_header(_('My Account / Edit Address'), 'address-book') }}
-      <div class="col-md-10">
-      <div class="row">
-        <div class="row">
-          <div class="col-md-7 col-md-offset-1">
-            <form action="{{ url_for('party.address.edit_address', address=address) }}"
-              method="post" id="address" autocomplete="off">
-	            {{ form.hidden_tag() }}
-              {{ render_field(form.name, class_="form-control") }}
-              
-              {{ render_field(form.street, placeholder=_("Street address, P.O. box, company name, c/o"), class_="form-control", label_text= _('Address Line 1')) }}
-              
-              {{ render_field(form.streetbis, placeholder=_("Apartment, suite, unit, building, floor, etc."), class_="form-control", label_text= _('Address Line 2')) }}
-              <div class="row">
-                <div class="col-md-6">
-                  {{ render_field(form.city, class_="form-control") }}
-                </div>
-                <div class="col-md-6">
-                  {{ render_field(form.zip, class_="form-control") }}
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  {{ render_field(form.country, class_="form-control")}}
-                </div>
-                {% set field = form.subdivision %}
-                <div class="form-group col-md-6">
-                  <label for="{{ field.id }}">{{ _("State") }} *:</label>
-                  <select name="{{ field.name }}" id="{{ field.id }}" selected_id="{{field.data}}" class="form-control"> 
-                  </select>
-                  {% if field.description %}
-                  <br/><span class="help-block">{{ field.description }}</span>
-                  {% endif %}
+        <div class="col-md-10">
+          <div class="row">
+            <div class="row">
+              <div class="col-md-7 col-md-offset-1">
+                <form action="{{ url_for('party.address.edit_address', address=address) }}"
+                  method="post" id="address" autocomplete="off">
+    	            {{ form.hidden_tag() }}
+                  {{ render_field(form.name, class_="form-control") }}
+                  
+                  {{ render_field(form.street, placeholder=_("Street address, P.O. box, company name, c/o"), class_="form-control", label_text= _('Address Line 1')) }}
+                  
+                  {{ render_field(form.streetbis, placeholder=_("Apartment, suite, unit, building, floor, etc."), class_="form-control", label_text= _('Address Line 2')) }}
+                  <div class="row">
+                    <div class="col-md-6">
+                      {{ render_field(form.city, class_="form-control") }}
+                    </div>
+                    <div class="col-md-6">
+                      {{ render_field(form.zip, class_="form-control") }}
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      {{ render_field(form.country, class_="form-control")}}
+                    </div>
+                    {% set field = form.subdivision %}
+                    <div class="form-group col-md-6">
+                      <label for="{{ field.id }}">{{ _("State") }} *:</label>
+                      <select name="{{ field.name }}" id="{{ field.id }}" selected_id="{{field.data}}" class="form-control"> 
+                      </select>
+                      {% if field.description %}
+                      <br/><span class="help-block">{{ field.description }}</span>
+                      {% endif %}
 
-                  {% for error in field.errors %}
-                  <br/><span class="help-block">{{ error }}</span>
-                  {% endfor %}
-                </div>
+                      {% for error in field.errors %}
+                      <br/><span class="help-block">{{ error }}</span>
+                      {% endfor %}
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      {{ render_field(form.phone, class_="form-control") }}
+                    </div>
+                  </div>
+                  <button href="" class="btn btn-warning btn-sm" type="submit">{{ _('Save Address') }}</button>
+                </form>
               </div>
-              <div class="row">
-                <div class="col-md-6">
-                  {{ render_field(form.phone, class_="form-control") }}
-                </div>
-              </div>
-              <button href="" class="btn btn-warning btn-sm" type="submit">{{ _('Save Address') }}</button>
-            </form>
+            </div>
           </div>
         </div>
       </div>
-      </div>
-    </div>
     </div>
   </div>
 </section>
